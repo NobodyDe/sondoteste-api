@@ -1,9 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from "cors"
+import auth from "./routes/auth"
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+
+
+app.use(express.json(), cors(),);
+app.use("/auth",auth)
 
 app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
