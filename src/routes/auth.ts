@@ -1,9 +1,9 @@
-import express, { Request, Response, NextFunction } from 'express';
+import { Router, Request, Response } from 'express';
 
- const router = express.Router()
+const router: Router = Router();
 
-router.get('/',(req: Request,res: Response)=> {
-    res.send("Rota de usúarios")
-})
+router.get('/', (req: Request, res: Response) => {
+    res.send("Rota de usúarios");
+});
 
-export default router
+export default router;

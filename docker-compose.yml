@@ -1,0 +1,16 @@
+services:
+  nexa-db:
+    container_name: sondoteste
+    image: postgres:17-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - sondoteste-pgdata:/var/lib/postgresql/data
+
+volumes:
+  sondoteste-pgdata:
