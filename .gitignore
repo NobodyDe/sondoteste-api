@@ -1,5 +1,6 @@
 # Dependências
 node_modules/
+.pnpm-store/
 
 # Build (saída do TypeScript compilado)
 dist/
