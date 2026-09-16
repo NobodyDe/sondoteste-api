@@ -8,19 +8,18 @@ router.get("/", (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  const payload = (req.body ?? {}) as Record<string, unknown>;
-  const hardware =
-    typeof payload?.hardware === "string" ? payload.hardware.trim() : "";
+  const { hardware, ...payload } = (req.body ?? {}) as Record<string, unknown>;
 
   if (!hardware) {
     return res.status(400).json({
       error: "O payload deve conter o hardware como texto.",
     });
   }
-
+  console.log(hardware, payload);
+  return;
   try {
     const sensor = await MonitorModels.registerPayloadInDatabase(
-      hardware,
+      hardware as string,
       payload,
     );
 
